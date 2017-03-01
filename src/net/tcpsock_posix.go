@@ -45,9 +45,6 @@ func (a *TCPAddr) toLocal(net string) sockaddr {
 }
 
 func (c *TCPConn) readFrom(r io.Reader) (int64, error) {
-	if n, err, handled := sendFile(c.fd, r); handled {
-		return n, err
-	}
 	return genericReadFrom(c, r)
 }
 
